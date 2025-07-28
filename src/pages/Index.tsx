@@ -41,22 +41,31 @@ const Index = () => {
 
   const giftCategories = [
     {
-      title: 'Персональные фотоальбомы',
-      price: 'от 2,500 ₽',
-      image: '/img/6b36ba7b-b4ca-4f1f-8c23-e4079611676b.jpg',
-      emotion: 'Ностальгия'
+      title: 'Эмоциональные коробки-сюрпризы',
+      price: '1 000 ₽',
+      image: '/img/fbc14a06-f8f3-452e-b8f8-d851d2604a53.jpg',
+      emotion: 'Радость',
+      description: 'Готовые тематические наборы с мини-играми, записками и подарками внутри',
+      rating: 4.8,
+      isPopular: true
     },
     {
-      title: 'Подарочные наборы',
-      price: 'от 1,800 ₽',
-      image: '/img/ba3d5729-226b-4d23-a7d8-88367adec625.jpg',
-      emotion: 'Радость'
+      title: 'Подарки-объятия',
+      price: '1 500 ₽',
+      image: '/img/3615ba2b-01a3-45db-821a-800ebdb03f85.jpg',
+      emotion: 'Благодарность',
+      description: 'Мягкие одеяла или подушки с вышивками, создающие ощущение тепла и заботы',
+      rating: 4.9,
+      isPopular: true
     },
     {
-      title: 'Впечатления',
-      price: 'от 3,000 ₽',
-      image: '/img/599a6424-41df-4501-b75f-dbebb2c10105.jpg',
-      emotion: 'Вдохновение'
+      title: 'Эмоциональные растения',
+      price: '900 ₽',
+      image: '/img/ba03c6d6-5535-482e-8e01-f9b842816b1c.jpg',
+      emotion: 'Умиротворение',
+      description: 'Маленькие комнатные растения с мотивационными надписями',
+      rating: 4.9,
+      isPopular: true
     }
   ];
 
@@ -176,14 +185,28 @@ const Index = () => {
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start mb-3">
                     <h4 className="font-heading font-semibold text-gray-900">{category.title}</h4>
-                    <Badge variant="secondary" className="bg-emotion-nostalgia/20 text-emotion-nostalgia border-0">
-                      {category.emotion}
-                    </Badge>
+                    <div className="flex items-center space-x-2">
+                      {category.isPopular && (
+                        <Badge className="bg-red-500 text-white text-xs">
+                          Популярное
+                        </Badge>
+                      )}
+                      <Badge variant="secondary" className="bg-emotion-nostalgia/20 text-emotion-nostalgia border-0">
+                        {category.emotion}
+                      </Badge>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{category.description}</p>
+                  <div className="flex items-center mb-4">
+                    <div className="flex items-center space-x-1">
+                      <Icon name="Star" size={16} className="text-yellow-400 fill-current" />
+                      <span className="text-sm font-medium text-gray-700">{category.rating}</span>
+                    </div>
                   </div>
                   <p className="text-2xl font-bold text-emotion-joy mb-4">{category.price}</p>
                   <a href="/catalog">
                     <Button className="w-full bg-emotion-gratitude hover:bg-emotion-gratitude/90 text-white">
-                      Смотреть варианты
+                      Смотреть в каталоге
                     </Button>
                   </a>
                 </CardContent>

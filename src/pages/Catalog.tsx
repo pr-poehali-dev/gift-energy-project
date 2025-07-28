@@ -1,18 +1,16 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
-import Icon from '@/components/ui/icon';
 import { useState } from 'react';
 import { useCart } from '@/hooks/useCart';
 import { toast } from '@/hooks/use-toast';
+import CatalogHeader from '@/components/catalog/CatalogHeader';
+import CatalogFilters from '@/components/catalog/CatalogFilters';
+import GiftCard from '@/components/catalog/GiftCard';
+import EmptyResults from '@/components/catalog/EmptyResults';
 
 const Catalog = () => {
   const [selectedEmotion, setSelectedEmotion] = useState('all');
   const [priceRange, setPriceRange] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const { addItem, totalItems } = useCart();
+  const { addItem } = useCart();
 
   const allGifts = [
     {
@@ -227,15 +225,6 @@ const Catalog = () => {
     }
   ];
 
-  const emotions = [
-    { value: 'all', label: 'Все эмоции' },
-    { value: 'Радость', label: 'Радость' },
-    { value: 'Благодарность', label: 'Благодарность' },
-    { value: 'Ностальгия', label: 'Ностальгия' },
-    { value: 'Вдохновение', label: 'Вдохновение' },
-    { value: 'Умиротворение', label: 'Умиротворение' }
-  ];
-
   const filteredGifts = allGifts.filter(gift => {
     const matchesEmotion = selectedEmotion === 'all' || gift.emotion === selectedEmotion;
     const matchesPrice = priceRange === 'all' || 
@@ -264,6 +253,12 @@ const Catalog = () => {
     });
   };
 
+  const resetFilters = () => {
+    setSelectedEmotion('all');
+    setPriceRange('all');
+    setSearchQuery('');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-100 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -275,222 +270,35 @@ const Catalog = () => {
       </div>
       
       <div className="relative z-10">
-        {/* Header */}
-        <header className="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-50">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <Button variant="ghost" className="p-2" onClick={() => window.history.back()}>
-                  <Icon name="ArrowLeft" size={20} />
-                </Button>
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-emotion-joy rounded-full flex items-center justify-center">
-                    <Icon name="Gift" size={20} className="text-white" />
-                  </div>
-                  <h1 className="text-2xl font-heading font-bold text-gray-900">Эмоции</h1>
-                </div>
-              </div>
-              <nav className="hidden md:flex items-center space-x-8">
-                <a href="/" className="text-gray-700 hover:text-emotion-joy transition-colors">Главная</a>
-                <a href="/cart" className="text-gray-700 hover:text-emotion-joy transition-colors">Корзина</a>
-              </nav>
-              <a href="/cart">
-                <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white relative">
-                  <Icon name="ShoppingCart" size={16} className="mr-2" />
-                  Корзина
-                  {totalItems > 0 && (
-                    <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center">
-                      {totalItems}
-                    </Badge>
-                  )}
-                </Button>
-              </a>
-            </div>
-          </div>
-        </header>
+        <CatalogHeader />
 
-        {/* Catalog Header */}
+        {/* Catalog Content */}
         <section className="py-12 px-4">
+          <CatalogFilters
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            selectedEmotion={selectedEmotion}
+            setSelectedEmotion={setSelectedEmotion}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            filteredGiftsCount={filteredGifts.length}
+            totalGiftsCount={allGifts.length}
+          />
+
           <div className="container mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-4xl font-heading font-bold text-gray-900 mb-4">
-                Каталог подарков
-              </h2>
-              <p className="text-lg text-gray-600 font-body max-w-2xl mx-auto">
-                Найдите идеальный подарок для любой эмоции. Каждый товар тщательно отобран нашими экспертами.
-              </p>
-            </div>
-
-            {/* Filters */}
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 mb-8">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Поиск</label>
-                  <div className="relative">
-                    <Icon name="Search" size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <Input 
-                      placeholder="Найти подарок..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Эмоция</label>
-                  <Select value={selectedEmotion} onValueChange={setSelectedEmotion}>
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {emotions.map((emotion) => (
-                        <SelectItem key={emotion.value} value={emotion.value}>
-                          {emotion.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Цена</label>
-                  <Select value={priceRange} onValueChange={setPriceRange}>
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">Любая цена</SelectItem>
-                      <SelectItem value="under2000">до 2 000 ₽</SelectItem>
-                      <SelectItem value="2000to4000">2 000 - 4 000 ₽</SelectItem>
-                      <SelectItem value="over4000">от 4 000 ₽</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="flex items-end">
-                  <Button 
-                    variant="outline" 
-                    className="w-full"
-                    onClick={() => {
-                      setSelectedEmotion('all');
-                      setPriceRange('all');
-                      setSearchQuery('');
-                    }}
-                  >
-                    <Icon name="RotateCcw" size={16} className="mr-2" />
-                    Сбросить
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Results Count */}
-            <div className="flex items-center justify-between mb-6">
-              <p className="text-gray-600 font-body">
-                Найдено {filteredGifts.length} из {allGifts.length} подарков
-              </p>
-              <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-600">Сортировка:</span>
-                <Select defaultValue="popular">
-                  <SelectTrigger className="w-[140px]">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="popular">По популярности</SelectItem>
-                    <SelectItem value="price-low">Цена ↑</SelectItem>
-                    <SelectItem value="price-high">Цена ↓</SelectItem>
-                    <SelectItem value="rating">По рейтингу</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
             {/* Gift Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredGifts.map((gift) => (
-                <Card key={gift.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img 
-                      src={gift.image} 
-                      alt={gift.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute top-3 left-3 flex flex-wrap gap-1">
-                      {gift.isNew && (
-                        <Badge className="bg-green-500 text-white">Новинка</Badge>
-                      )}
-                      {gift.isPopular && (
-                        <Badge className="bg-orange-500 text-white">Хит</Badge>
-                      )}
-                      {gift.isPremium && (
-                        <Badge className="bg-purple-500 text-white">Premium</Badge>
-                      )}
-                    </div>
-                    <div className="absolute top-3 right-3">
-                      <Button size="sm" variant="secondary" className="rounded-full w-8 h-8 p-0">
-                        <Icon name="Heart" size={14} />
-                      </Button>
-                    </div>
-                  </div>
-                  <CardContent className="p-4">
-                    <div className="mb-2">
-                      <Badge variant="secondary" className="bg-emotion-nostalgia/20 text-emotion-nostalgia border-0 text-xs">
-                        {gift.emotion}
-                      </Badge>
-                    </div>
-                    <h3 className="font-heading font-semibold text-gray-900 mb-2 line-clamp-2">
-                      {gift.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 font-body mb-3 line-clamp-2">
-                      {gift.description}
-                    </p>
-                    <div className="flex items-center mb-3">
-                      <div className="flex items-center">
-                        <Icon name="Star" size={14} className="text-yellow-400 fill-current" />
-                        <span className="text-xs text-gray-600 ml-1">{gift.rating}</span>
-                      </div>
-                      <span className="text-xs text-gray-400 ml-2">({gift.reviews} отзывов)</span>
-                    </div>
-                    <div className="flex items-center justify-between mb-3">
-                      <div>
-                        <span className="text-lg font-bold text-emotion-joy">{gift.price} ₽</span>
-                        {gift.originalPrice && (
-                          <span className="text-sm text-gray-400 line-through ml-2">
-                            {gift.originalPrice} ₽
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <Button 
-                      className="w-full bg-emotion-gratitude hover:bg-emotion-gratitude/90 text-white text-sm"
-                      onClick={() => handleAddToCart(gift)}
-                    >
-                      <Icon name="ShoppingCart" size={14} className="mr-2" />
-                      В корзину
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {filteredGifts.length === 0 && (
-              <div className="text-center py-12">
-                <Icon name="Search" size={64} className="text-gray-300 mx-auto mb-4" />
-                <h3 className="text-xl font-heading font-semibold text-gray-900 mb-2">
-                  Подарки не найдены
-                </h3>
-                <p className="text-gray-600 font-body mb-6">
-                  Попробуйте изменить параметры поиска или сбросить фильтры
-                </p>
-                <Button 
-                  onClick={() => {
-                    setSelectedEmotion('all');
-                    setPriceRange('all');
-                    setSearchQuery('');
-                  }}
-                  className="bg-emotion-joy hover:bg-emotion-joy/90 text-white"
-                >
-                  Сбросить фильтры
-                </Button>
+            {filteredGifts.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {filteredGifts.map((gift) => (
+                  <GiftCard 
+                    key={gift.id} 
+                    gift={gift} 
+                    onAddToCart={handleAddToCart}
+                  />
+                ))}
               </div>
+            ) : (
+              <EmptyResults onResetFilters={resetFilters} />
             )}
           </div>
         </section>

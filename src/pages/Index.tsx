@@ -94,6 +94,7 @@ const Index = () => {
               <a href="/catalog" className="text-gray-700 hover:text-emotion-joy transition-colors">Каталог</a>
               <a href="#emotions" className="text-gray-700 hover:text-emotion-joy transition-colors">Подбор по эмоциям</a>
               <a href="#personalization" className="text-gray-700 hover:text-emotion-joy transition-colors">Персонализация</a>
+              <a href="/support" className="text-gray-700 hover:text-emotion-joy transition-colors">Поддержка</a>
               <a href="#delivery" className="text-gray-700 hover:text-emotion-joy transition-colors">Доставка</a>
               <a href="#contacts" className="text-gray-700 hover:text-emotion-joy transition-colors">Контакты</a>
             </nav>

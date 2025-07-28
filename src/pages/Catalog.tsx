@@ -5,11 +5,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { useState } from 'react';
+import { useCart } from '@/hooks/useCart';
+import { toast } from '@/hooks/use-toast';
 
 const Catalog = () => {
   const [selectedEmotion, setSelectedEmotion] = useState('all');
   const [priceRange, setPriceRange] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const { addItem, totalItems } = useCart();
 
   const allGifts = [
     {
@@ -245,6 +248,22 @@ const Catalog = () => {
     return matchesEmotion && matchesPrice && matchesSearch;
   });
 
+  const handleAddToCart = (gift: any) => {
+    addItem({
+      id: gift.id,
+      title: gift.title,
+      price: gift.price,
+      emotion: gift.emotion,
+      image: gift.image,
+      personalization: `Подарок из категории "${gift.category}"`
+    });
+    
+    toast({
+      title: "Товар добавлен в корзину!",
+      description: `${gift.title} добавлен в корзину`,
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-100 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -275,10 +294,17 @@ const Catalog = () => {
                 <a href="/" className="text-gray-700 hover:text-emotion-joy transition-colors">Главная</a>
                 <a href="/cart" className="text-gray-700 hover:text-emotion-joy transition-colors">Корзина</a>
               </nav>
-              <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white">
-                <Icon name="ShoppingCart" size={16} className="mr-2" />
-                Корзина
-              </Button>
+              <a href="/cart">
+                <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white relative">
+                  <Icon name="ShoppingCart" size={16} className="mr-2" />
+                  Корзина
+                  {totalItems > 0 && (
+                    <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center">
+                      {totalItems}
+                    </Badge>
+                  )}
+                </Button>
+              </a>
             </div>
           </div>
         </header>
@@ -433,7 +459,10 @@ const Catalog = () => {
                         )}
                       </div>
                     </div>
-                    <Button className="w-full bg-emotion-gratitude hover:bg-emotion-gratitude/90 text-white text-sm">
+                    <Button 
+                      className="w-full bg-emotion-gratitude hover:bg-emotion-gratitude/90 text-white text-sm"
+                      onClick={() => handleAddToCart(gift)}
+                    >
                       <Icon name="ShoppingCart" size={14} className="mr-2" />
                       В корзину
                     </Button>

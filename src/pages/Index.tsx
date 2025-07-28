@@ -2,8 +2,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { useCart } from '@/hooks/useCart';
 
 const Index = () => {
+  const { totalItems } = useCart();
   const emotions = [
     {
       name: 'Радость',
@@ -87,9 +89,14 @@ const Index = () => {
               <a href="#contacts" className="text-gray-700 hover:text-emotion-joy transition-colors">Контакты</a>
             </nav>
             <a href="/cart">
-              <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white">
+              <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white relative">
                 <Icon name="ShoppingCart" size={16} className="mr-2" />
                 Корзина
+                {totalItems > 0 && (
+                  <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center">
+                    {totalItems}
+                  </Badge>
+                )}
               </Button>
             </a>
           </div>

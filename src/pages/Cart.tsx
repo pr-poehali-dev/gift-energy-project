@@ -3,41 +3,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import Icon from '@/components/ui/icon';
-import { useState } from 'react';
+import { useCart } from '@/hooks/useCart';
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      title: 'Персональный фотоальбом "Наши моменты"',
-      price: 2500,
-      quantity: 1,
-      emotion: 'Ностальгия',
-      image: '/img/6b36ba7b-b4ca-4f1f-8c23-e4079611676b.jpg',
-      personalization: 'С вашими фотографиями + гравировка имени'
-    },
-    {
-      id: 2,
-      title: 'Подарочный набор "Радость дня"',
-      price: 1800,
-      quantity: 2,
-      emotion: 'Радость',
-      image: '/img/ba3d5729-226b-4d23-a7d8-88367adec625.jpg',
-      personalization: 'Любимые сладости + персональная открытка'
-    }
-  ]);
-
-  const updateQuantity = (id: number, newQuantity: number) => {
-    if (newQuantity === 0) {
-      setCartItems(cartItems.filter(item => item.id !== id));
-    } else {
-      setCartItems(cartItems.map(item => 
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      ));
-    }
-  };
-
-  const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const { items: cartItems, totalItems, totalPrice, updateQuantity, removeItem } = useCart();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-100 relative overflow-hidden">
@@ -79,7 +48,7 @@ const Cart = () => {
               <Icon name="ShoppingCart" size={28} className="text-emotion-joy" />
               <h2 className="text-3xl font-heading font-bold text-gray-900">Ваша корзина</h2>
               <Badge variant="secondary" className="bg-emotion-joy/20 text-emotion-joy">
-                {cartItems.length} товаров
+                {totalItems} товаров
               </Badge>
             </div>
 
@@ -89,10 +58,12 @@ const Cart = () => {
                   <Icon name="ShoppingCart" size={64} className="text-gray-300 mx-auto mb-4" />
                   <h3 className="text-xl font-heading font-semibold text-gray-900 mb-2">Корзина пуста</h3>
                   <p className="text-gray-600 font-body mb-6">Добавьте подарки, чтобы порадовать близких!</p>
-                  <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white">
-                    <Icon name="Gift" size={16} className="mr-2" />
-                    Перейти к покупкам
-                  </Button>
+                  <a href="/catalog">
+                    <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white">
+                      <Icon name="Gift" size={16} className="mr-2" />
+                      Перейти к покупкам
+                    </Button>
+                  </a>
                 </CardContent>
               </Card>
             ) : (
@@ -116,7 +87,7 @@ const Cart = () => {
                               <Button 
                                 variant="ghost" 
                                 size="sm"
-                                onClick={() => updateQuantity(item.id, 0)}
+                                onClick={() => removeItem(item.id)}
                                 className="text-gray-400 hover:text-red-500"
                               >
                                 <Icon name="X" size={16} />
@@ -166,7 +137,7 @@ const Cart = () => {
                       <h3 className="text-xl font-heading font-semibold text-gray-900 mb-4">Итого</h3>
                       <div className="space-y-3 mb-4">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Товары ({cartItems.reduce((sum, item) => sum + item.quantity, 0)})</span>
+                          <span className="text-gray-600">Товары ({totalItems})</span>
                           <span className="font-semibold">{totalPrice} ₽</span>
                         </div>
                         <div className="flex justify-between">

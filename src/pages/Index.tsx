@@ -90,25 +90,26 @@ const Index = () => {
               </div>
               <h1 className="text-2xl font-heading font-bold text-gray-900">Эмоции</h1>
             </div>
-            <nav className="hidden md:flex items-center space-x-6">
-              <a href="/catalog" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Каталог</a>
-              <a href="#emotions" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Эмоции</a>
-              <a href="#personalization" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Персонализация</a>
-              <a href="#delivery" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Доставка</a>
-              <a href="#contacts" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Контакты</a>
-              <a href="/support" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Поддержка</a>
-            </nav>
-            <a href="/cart">
-              <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white relative">
-                <Icon name="ShoppingCart" size={16} className="mr-2" />
-                Корзина
-                {totalItems > 0 && (
-                  <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center">
-                    {totalItems}
-                  </Badge>
-                )}
-              </Button>
-            </a>
+            <div className="flex items-center space-x-6">
+              <nav className="hidden md:flex items-center space-x-6">
+                <a href="/catalog" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Каталог</a>
+                <a href="#emotions" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Эмоции</a>
+                <a href="#personalization" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Персонализация</a>
+                <a href="#delivery" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Доставка</a>
+                <a href="#contacts" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Контакты</a>
+                <a href="/support" className="text-sm text-gray-700 hover:text-emotion-joy transition-colors">Поддержка</a>
+              </nav>
+                <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white relative">
+                  <Icon name="ShoppingCart" size={16} className="mr-2" />
+                  Корзина
+                  {totalItems > 0 && (
+                    <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center">
+                      {totalItems}
+                    </Badge>
+                  )}
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </header>

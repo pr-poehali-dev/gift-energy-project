@@ -165,6 +165,49 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Team Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-heading font-bold text-center text-gray-900 mb-12">
+            Наша команда креатива
+          </h3>
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <p className="text-lg text-gray-600 font-body mb-8">
+              За каждым идеальным подарком стоит команда профессионалов, которые понимают психологию эмоций и искусство дарения.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Card className="text-center">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-emotion-joy rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Brain" size={24} className="text-white" />
+                  </div>
+                  <h4 className="font-heading font-semibold text-gray-900 mb-2">Психологи</h4>
+                  <p className="text-gray-600 font-body">Изучают эмоциональные потребности и подбирают подарки, которые затронут душу</p>
+                </CardContent>
+              </Card>
+              <Card className="text-center">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-emotion-gratitude rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Palette" size={24} className="text-white" />
+                  </div>
+                  <h4 className="font-heading font-semibold text-gray-900 mb-2">Дизайнеры</h4>
+                  <p className="text-gray-600 font-body">Создают уникальное оформление и персонализированные элементы для каждого подарка</p>
+                </CardContent>
+              </Card>
+              <Card className="text-center">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-emotion-inspiration rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Lightbulb" size={24} className="text-white" />
+                  </div>
+                  <h4 className="font-heading font-semibold text-gray-900 mb-2">Креативщики</h4>
+                  <p className="text-gray-600 font-body">Придумывают неожиданные решения и находят самые необычные идеи для подарков</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Personalization Section */}
       <section id="personalization" className="py-16 px-4 bg-white/50">
         <div className="container mx-auto">
@@ -270,7 +313,7 @@ const Index = () => {
                     <Icon name="Phone" size={20} className="text-white" />
                   </div>
                   <h4 className="font-heading font-semibold text-gray-900 mb-2">Телефон</h4>
-                  <p className="text-gray-600 font-body">+7 (495) 123-45-67</p>
+                  <p className="text-gray-600 font-body">+7 (980) 187-20-23</p>
                 </CardContent>
               </Card>
               <Card>
@@ -279,7 +322,7 @@ const Index = () => {
                     <Icon name="Mail" size={20} className="text-white" />
                   </div>
                   <h4 className="font-heading font-semibold text-gray-900 mb-2">Email</h4>
-                  <p className="text-gray-600 font-body">hello@emotions.ru</p>
+                  <p className="text-gray-600 font-body">Clorrty@yandex.ru</p>
                 </CardContent>
               </Card>
             </div>

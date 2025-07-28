@@ -42,7 +42,7 @@ const Index = () => {
   const giftCategories = [
     {
       title: 'Эмоциональные коробки-сюрпризы',
-      price: '1 000 ₽',
+      price: 'от 1 000 ₽',
       image: '/img/fbc14a06-f8f3-452e-b8f8-d851d2604a53.jpg',
       emotion: 'Радость',
       description: 'Готовые тематические наборы с мини-играми, записками и подарками внутри',
@@ -51,7 +51,7 @@ const Index = () => {
     },
     {
       title: 'Подарки-объятия',
-      price: '1 500 ₽',
+      price: 'от 1 500 ₽',
       image: '/img/3615ba2b-01a3-45db-821a-800ebdb03f85.jpg',
       emotion: 'Благодарность',
       description: 'Мягкие одеяла или подушки с вышивками, создающие ощущение тепла и заботы',
@@ -60,7 +60,7 @@ const Index = () => {
     },
     {
       title: 'Эмоциональные растения',
-      price: '900 ₽',
+      price: 'от 900 ₽',
       image: '/img/ba03c6d6-5535-482e-8e01-f9b842816b1c.jpg',
       emotion: 'Умиротворение',
       description: 'Маленькие комнатные растения с мотивационными надписями',
@@ -119,8 +119,11 @@ const Index = () => {
             <h2 className="text-5xl font-heading font-bold text-gray-900 mb-6">
               Подарки, которые <span className="text-emotion-joy">дарят эмоции</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-body">
-              Мы создаем персонализированные подарки, специально подобранные для вызова определенных эмоций у получателя
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto font-body">
+              Мы создаем <span className="font-semibold text-emotion-gratitude">персонализированные подарки и услуги</span>, 
+              индивидуально подобранные под каждого получателя. Каждый подарок изготавливается 
+              <span className="font-semibold text-emotion-inspiration"> специально для вас</span> и предназначен для создания 
+              определенных эмоций и воспоминаний.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/catalog">
@@ -235,7 +238,7 @@ const Index = () => {
                   <Icon name="Gift" size={24} className="text-white" />
                 </div>
                 <h4 className="font-heading font-bold text-xl text-gray-900 mb-3">Базовый</h4>
-                <p className="text-3xl font-bold text-purple-600 mb-4">2 000₽</p>
+                <p className="text-3xl font-bold text-purple-600 mb-4">от 2 000₽</p>
                 <p className="text-gray-600 mb-6">
                   Идеально для небольших приятных сюрпризов. Подходит для большинства подарков из каталога.
                 </p>
@@ -256,7 +259,7 @@ const Index = () => {
                   <Icon name="Star" size={24} className="text-white" />
                 </div>
                 <h4 className="font-heading font-bold text-xl text-gray-900 mb-3">Премиум</h4>
-                <p className="text-3xl font-bold text-purple-600 mb-4">5 000₽</p>
+                <p className="text-3xl font-bold text-purple-600 mb-4">от 5 000₽</p>
                 <p className="text-gray-600 mb-6">
                   Включает персональную консультацию и помощь в подборе идеального подарка.
                 </p>
@@ -277,7 +280,7 @@ const Index = () => {
                   <Icon name="Crown" size={24} className="text-white" />
                 </div>
                 <h4 className="font-heading font-bold text-xl text-gray-900 mb-3">Эксклюзив</h4>
-                <p className="text-3xl font-bold text-purple-600 mb-4">10 000₽</p>
+                <p className="text-3xl font-bold text-purple-600 mb-4">от 10 000₽</p>
                 <p className="text-gray-600 mb-6">
                   Безграничные возможности персонализации и эксклюзивные подарки.
                 </p>

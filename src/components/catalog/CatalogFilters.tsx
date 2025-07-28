@@ -97,7 +97,7 @@ const CatalogFilters = ({
           <div className="flex items-end">
             <Button 
               variant="outline" 
-              className="w-full"
+              className="w-full transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-md"
               onClick={resetFilters}
             >
               <Icon name="RotateCcw" size={16} className="mr-2" />

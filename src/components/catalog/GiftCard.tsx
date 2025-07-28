@@ -46,7 +46,7 @@ const GiftCard = ({ gift, onAddToCart }: GiftCardProps) => {
           )}
         </div>
         <div className="absolute top-3 right-3">
-          <Button size="sm" variant="secondary" className="rounded-full w-8 h-8 p-0">
+          <Button size="sm" variant="secondary" className="rounded-full w-8 h-8 p-0 transition-all duration-200 hover:scale-110 active:scale-95 hover:bg-red-100 hover:text-red-500">
             <Icon name="Heart" size={14} />
           </Button>
         </div>
@@ -81,7 +81,7 @@ const GiftCard = ({ gift, onAddToCart }: GiftCardProps) => {
           </div>
         </div>
         <Button 
-          className="w-full bg-emotion-gratitude hover:bg-emotion-gratitude/90 text-white text-sm"
+          className="w-full bg-emotion-gratitude hover:bg-emotion-gratitude/90 text-white text-sm transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg transform-gpu"
           onClick={() => onAddToCart(gift)}
         >
           <Icon name="ShoppingCart" size={14} className="mr-2" />

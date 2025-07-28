@@ -11,7 +11,7 @@ const CatalogHeader = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="p-2" onClick={() => window.history.back()}>
+            <Button variant="ghost" className="p-2 transition-all duration-200 hover:scale-110 active:scale-95 hover:bg-gray-100" onClick={() => window.history.back()}>
               <Icon name="ArrowLeft" size={20} />
             </Button>
             <div className="flex items-center space-x-2">
@@ -22,11 +22,11 @@ const CatalogHeader = () => {
             </div>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-gray-700 hover:text-emotion-joy transition-colors">Главная</a>
-            <a href="/cart" className="text-gray-700 hover:text-emotion-joy transition-colors">Корзина</a>
+            <a href="/" className="text-gray-700 hover:text-emotion-joy transition-all duration-200 hover:scale-105 active:scale-95">Главная</a>
+            <a href="/cart" className="text-gray-700 hover:text-emotion-joy transition-all duration-200 hover:scale-105 active:scale-95">Корзина</a>
           </nav>
           <a href="/cart">
-            <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white relative">
+            <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white relative transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg">
               <Icon name="ShoppingCart" size={16} className="mr-2" />
               Корзина
               {totalItems > 0 && (

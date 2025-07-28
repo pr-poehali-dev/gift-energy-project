@@ -17,7 +17,7 @@ const EmptyResults = ({ onResetFilters }: EmptyResultsProps) => {
       </p>
       <Button 
         onClick={onResetFilters}
-        className="bg-emotion-joy hover:bg-emotion-joy/90 text-white"
+        className="bg-emotion-joy hover:bg-emotion-joy/90 text-white transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
       >
         Сбросить фильтры
       </Button>

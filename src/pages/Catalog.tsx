@@ -35,18 +35,6 @@ const Catalog = () => {
         rating: 4.8,
         reviews: 145,
         isPopular: true
-      },
-      {
-        id: 11,
-        title: 'Сертификат "Базовый"',
-        price: 2000,
-        emotion: 'Радость',
-        category: 'Сертификаты',
-        image: '/img/89e1c169-b237-41c5-bf18-80ce801d18e9.jpg',
-        description: 'Подарочный сертификат на любой товар из каталога до 2000₽',
-        rating: 4.9,
-        reviews: 189,
-        isPopular: true
       }
     ],
     'Благодарность': [
@@ -61,18 +49,6 @@ const Catalog = () => {
         rating: 4.9,
         reviews: 203,
         isPopular: true
-      },
-      {
-        id: 12,
-        title: 'Сертификат "Премиум"',
-        price: 5000,
-        emotion: 'Благодарность',
-        category: 'Сертификаты',
-        image: '/img/4833b102-2b10-4324-a08f-8ed250710f5a.jpg',
-        description: 'Премиум сертификат с персональной консультацией и подбором подарка',
-        rating: 4.9,
-        reviews: 95,
-        isPremium: true
       }
     ],
     'Ностальгия': [
@@ -135,18 +111,6 @@ const Catalog = () => {
         rating: 4.8,
         reviews: 156,
         isNew: true
-      },
-      {
-        id: 13,
-        title: 'VIP Сертификат "Эксклюзив"',
-        price: 10000,
-        emotion: 'Вдохновение',
-        category: 'Сертификаты',
-        image: '/img/57e3c4a8-56ef-42c4-97ed-970cba3b6584.jpg',
-        description: 'Эксклюзивный VIP сертификат с безграничными возможностями персонализации',
-        rating: 5.0,
-        reviews: 67,
-        isPremium: true
       }
     ],
     'Умиротворение': [

@@ -193,6 +193,80 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Gift Certificates Section */}
+      <section className="py-16 px-4 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-heading font-bold text-gray-900 mb-4">
+              Подарочные сертификаты
+            </h3>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Не знаете что выбрать? Подарите свободу выбора с нашими сертификатами
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="relative overflow-hidden hover:shadow-xl transition-all hover:scale-105 border-2 border-dashed border-purple-200">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Icon name="Gift" size={24} className="text-white" />
+                </div>
+                <h4 className="font-heading font-bold text-xl text-gray-900 mb-3">Базовый</h4>
+                <p className="text-3xl font-bold text-purple-600 mb-4">2 000₽</p>
+                <p className="text-gray-600 mb-6">
+                  Идеально для небольших приятных сюрпризов. Подходит для большинства подарков из каталога.
+                </p>
+                <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white">
+                  Купить сертификат
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="relative overflow-hidden hover:shadow-xl transition-all hover:scale-105 border-2 border-solid border-purple-300 bg-gradient-to-br from-white to-purple-50">
+              <div className="absolute top-4 right-4">
+                <Badge className="bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+                  Популярный
+                </Badge>
+              </div>
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Icon name="Star" size={24} className="text-white" />
+                </div>
+                <h4 className="font-heading font-bold text-xl text-gray-900 mb-3">Премиум</h4>
+                <p className="text-3xl font-bold text-purple-600 mb-4">5 000₽</p>
+                <p className="text-gray-600 mb-6">
+                  Включает персональную консультацию и помощь в подборе идеального подарка.
+                </p>
+                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
+                  Купить сертификат
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="relative overflow-hidden hover:shadow-xl transition-all hover:scale-105 border-2 border-solid border-gradient-to-r from-purple-400 to-pink-400 bg-gradient-to-br from-purple-50 to-pink-50">
+              <div className="absolute top-4 right-4">
+                <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white">
+                  VIP
+                </Badge>
+              </div>
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-700 to-pink-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Icon name="Crown" size={24} className="text-white" />
+                </div>
+                <h4 className="font-heading font-bold text-xl text-gray-900 mb-3">Эксклюзив</h4>
+                <p className="text-3xl font-bold text-purple-600 mb-4">10 000₽</p>
+                <p className="text-gray-600 mb-6">
+                  Безграничные возможности персонализации и эксклюзивные подарки.
+                </p>
+                <Button className="w-full bg-gradient-to-r from-purple-700 to-pink-700 hover:from-purple-800 hover:to-pink-800 text-white">
+                  Купить сертификат
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Team Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto">

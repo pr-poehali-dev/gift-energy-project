@@ -268,10 +268,12 @@ const Index = () => {
                     </div>
                   </div>
                 </div>
-                <Button className="mt-8 bg-emotion-joy hover:bg-emotion-joy/90 text-white">
-                  <Icon name="MessageCircle" size={16} className="mr-2" />
-                  Начать персонализацию
-                </Button>
+                <a href="/personalization">
+                  <Button className="mt-8 bg-emotion-joy hover:bg-emotion-joy/90 text-white transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg">
+                    <Icon name="MessageCircle" size={16} className="mr-2" />
+                    Начать персонализацию
+                  </Button>
+                </a>
               </div>
               <div className="relative">
                 <div className="w-full h-64 bg-gradient-to-br from-emotion-nostalgia/20 to-emotion-peace/20 rounded-2xl flex items-center justify-center">

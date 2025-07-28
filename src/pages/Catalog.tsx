@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '@/hooks/useCart';
 import { toast } from '@/hooks/use-toast';
 import CatalogHeader from '@/components/catalog/CatalogHeader';
@@ -11,6 +11,15 @@ const Catalog = () => {
   const [priceRange, setPriceRange] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const { addItem } = useCart();
+
+  // Проверяем URL параметры при загрузке компонента
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const emotionParam = urlParams.get('emotion');
+    if (emotionParam) {
+      setSelectedEmotion(emotionParam);
+    }
+  }, []);
 
   // Группировка товаров по эмоциям
   const giftsByEmotion = {

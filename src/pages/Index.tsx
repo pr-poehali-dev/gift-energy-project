@@ -137,15 +137,21 @@ const Index = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {emotions.map((emotion, index) => (
-              <Card key={emotion.name} className="hover:shadow-lg transition-all hover:scale-105 cursor-pointer group">
-                <CardContent className="p-6 text-center">
-                  <div className={`w-16 h-16 ${emotion.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
-                    <Icon name={emotion.icon as any} size={24} className="text-white" />
-                  </div>
-                  <h4 className="font-heading font-semibold text-gray-900 mb-2">{emotion.name}</h4>
-                  <p className="text-sm text-gray-600 font-body">{emotion.description}</p>
-                </CardContent>
-              </Card>
+              <a 
+                key={emotion.name} 
+                href={`/catalog?emotion=${encodeURIComponent(emotion.name)}`}
+                className="block"
+              >
+                <Card className="hover:shadow-lg transition-all hover:scale-105 cursor-pointer group">
+                  <CardContent className="p-6 text-center">
+                    <div className={`w-16 h-16 ${emotion.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+                      <Icon name={emotion.icon as any} size={24} className="text-white" />
+                    </div>
+                    <h4 className="font-heading font-semibold text-gray-900 mb-2">{emotion.name}</h4>
+                    <p className="text-sm text-gray-600 font-body">{emotion.description}</p>
+                  </CardContent>
+                </Card>
+              </a>
             ))}
           </div>
         </div>

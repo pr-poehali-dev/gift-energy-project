@@ -80,16 +80,18 @@ const Index = () => {
               <h1 className="text-2xl font-heading font-bold text-gray-900">Эмоции</h1>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#catalog" className="text-gray-700 hover:text-emotion-joy transition-colors">Каталог</a>
+              <a href="/catalog" className="text-gray-700 hover:text-emotion-joy transition-colors">Каталог</a>
               <a href="#emotions" className="text-gray-700 hover:text-emotion-joy transition-colors">Подбор по эмоциям</a>
               <a href="#personalization" className="text-gray-700 hover:text-emotion-joy transition-colors">Персонализация</a>
               <a href="#delivery" className="text-gray-700 hover:text-emotion-joy transition-colors">Доставка</a>
               <a href="#contacts" className="text-gray-700 hover:text-emotion-joy transition-colors">Контакты</a>
             </nav>
-            <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white">
-              <Icon name="ShoppingCart" size={16} className="mr-2" />
-              Корзина
-            </Button>
+            <a href="/cart">
+              <Button className="bg-emotion-joy hover:bg-emotion-joy/90 text-white">
+                <Icon name="ShoppingCart" size={16} className="mr-2" />
+                Корзина
+              </Button>
+            </a>
           </div>
         </div>
       </header>
@@ -105,10 +107,12 @@ const Index = () => {
               Мы создаем персонализированные подарки, специально подобранные для вызова определенных эмоций у получателя
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-emotion-joy hover:bg-emotion-joy/90 text-white px-8">
-                <Icon name="Gift" size={20} className="mr-2" />
-                Подобрать подарок
-              </Button>
+              <a href="/catalog">
+                <Button size="lg" className="bg-emotion-joy hover:bg-emotion-joy/90 text-white px-8">
+                  <Icon name="Gift" size={20} className="mr-2" />
+                  Подобрать подарок
+                </Button>
+              </a>
               <Button size="lg" variant="outline" className="border-emotion-gratitude text-emotion-gratitude hover:bg-emotion-gratitude hover:text-white">
                 <Icon name="Play" size={20} className="mr-2" />
                 Смотреть видео
@@ -164,9 +168,11 @@ const Index = () => {
                     </Badge>
                   </div>
                   <p className="text-2xl font-bold text-emotion-joy mb-4">{category.price}</p>
-                  <Button className="w-full bg-emotion-gratitude hover:bg-emotion-gratitude/90 text-white">
-                    Смотреть варианты
-                  </Button>
+                  <a href="/catalog">
+                    <Button className="w-full bg-emotion-gratitude hover:bg-emotion-gratitude/90 text-white">
+                      Смотреть варианты
+                    </Button>
+                  </a>
                 </CardContent>
               </Card>
             ))}
